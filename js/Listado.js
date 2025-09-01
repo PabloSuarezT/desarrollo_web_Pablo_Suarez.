@@ -11,7 +11,7 @@ const avisosAdopcion = [
         tipo: 'Perro',
         edad: '5 años',
         nombreContacto: 'Hector',
-        email: 'hector@example.com', 
+        email: 'terminhector@gmail..com', 
         celular: '+56 9 5652 5155', 
         contactoPor: 'Whatsapp',
         descripcion: 'Sam es un samoyedo muy juguetón y amigable. Le encanta correr y es muy bueno con los niños. Busca una familia que le dé mucho cariño.', // Agregado
@@ -31,7 +31,7 @@ const avisosAdopcion = [
         tipo: 'Perro',
         edad: '3 años',
         nombreContacto: 'Sofía',
-        email: 'sofia@example.com',
+        email: 'cssofia@gmail.com',
         celular: '+56 9 5398 2175', 
         contactoPor: 'Telegram', 
         descripcion: 'Brandon y Osha son hermanos, muy apegados entre sí. Boyeros de Berna que buscan un hogar con espacio para jugar y un dueño que los quiera a ambos.', // Agregado
@@ -51,7 +51,7 @@ const avisosAdopcion = [
         tipo: 'Perro',
         edad: '5 meses',
         nombreContacto: 'Millarai',
-        email: 'millarai@example.com', 
+        email: 'htmllarai@gmail.com.com', 
         celular: '+56 9 1472 5223', 
         contactoPor: 'Whatsapp', 
         descripcion: 'Antupi es un cachorro de husky muy enérgico. Está listo para ser adoptado por una familia responsable.', // Agregado
@@ -71,7 +71,7 @@ const avisosAdopcion = [
         tipo: 'Gato',
         edad: '2 años',
         nombreContacto: 'Pablo',
-        email: 'pablo@example.com',
+        email: 'phpablo@gmail.com',
         celular: '+56 9 9290 9125',
         contactoPor: 'Whatsapp',
         descripcion: 'Felicia es una gata siamesa tranquila y cariñosa. Le gusta estar en interiores y es perfecta para un apartamento.', // Agregado
@@ -89,8 +89,8 @@ const avisosAdopcion = [
         cantidad: 1,
         tipo: 'Gato',
         edad: '2 meses',
-        nombreContacto: 'Carlos',
-        email: 'carlos@example.com', 
+        nombreContacto: 'Javier',
+        email: 'javaer@gmail.com', 
         celular: '+56 9 1632 5192',
         contactoPor: 'X',
         descripcion: 'Jeyne es una gata carey muy juguetona y curiosa. Ideal para una casa con jardín.',
@@ -101,20 +101,26 @@ const avisosAdopcion = [
     }
 ];
 
+// Espera a que el DOM esté completamente cargado.
 document.addEventListener('DOMContentLoaded', () => {
 
     const listaAvisosDiv = document.getElementById('lista-avisos');
     const detalleAvisoDiv = document.getElementById('detalle-aviso');
     const listadoPrincipal = document.getElementById('listado-principal');
 
+    // Agrega un 'event listener' al listado principal.
     listadoPrincipal.addEventListener('click', (event) => {
+        // Identifica la fila (tr) más cercana al elemento clickeado.
         let filaClickeada = event.target.closest('tr');
         if (!filaClickeada) return;
 
+        // Obtiene el ID del aviso desde el atributo 'data-id'.
         const avisoId = parseInt(filaClickeada.getAttribute('data-id'));
+        // Busca el aviso correspondiente en el arreglo.
         const aviso = avisosAdopcion.find(av => av.id === avisoId);
         if (!aviso) return;
 
+        // Oculta el listado y muestra la sección de detalles.
         listaAvisosDiv.style.display = 'none';
         detalleAvisoDiv.style.display = 'block';
 
@@ -139,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <button id="volver-portada">Volver a la portada</button>
         `;
 
+// Agrega 'event listeners' a los botones "Volver al listado" y "Volver a la portada".
         document.getElementById('volver-listado').addEventListener('click', () => {
             detalleAvisoDiv.style.display = 'none';
             listaAvisosDiv.style.display = 'block';
@@ -148,8 +155,10 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'index.html';
         });
 
+        // Agrega un 'event listener' para el clic en la foto pequeña.
         const fotoSmall = document.querySelector('.foto-small');
         fotoSmall.addEventListener('click', () => {
+            // Crea un 'overlay' (superposición) para mostrar la imagen en grande.
             const overlay = document.createElement('div');
             overlay.className = 'overlay';
             overlay.innerHTML = `
@@ -158,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             document.body.appendChild(overlay);
 
+            // Agrega un 'event listener' al botón para cerrar la superposición.
             document.getElementById('cerrar-foto').addEventListener('click', () => {
                 document.body.removeChild(overlay);
             });
