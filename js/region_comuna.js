@@ -184,7 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const validatePhotos = (files) => {
         const lengthValid = files.length >= 1 && files.length <= 5;
-        // La tarea no especifica validación de tipo de archivo, solo la cantidad
         return lengthValid;
     };
 
